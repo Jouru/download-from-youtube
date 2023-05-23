@@ -18,7 +18,7 @@ def main():
     if args.list:
         if args.a:
             download_playlist_audio_only(args.a, dp)
-            print('Done!')
+            print('Download completed!')
         elif args.p:
             download_playlist(args.p, dp)
             print('Done!')
@@ -47,9 +47,12 @@ def download_playlist_audio_only(pl, dp):
     with tempfile.TemporaryDirectory(dir=dp) as tempdir:
         for track in p.videos:
             audio = track.streams.get_audio_only()
+            print(f'Downloading {audio.title}')
             audio.download(tempdir)
+            print(f'Done!\nConverting {audio.title} to flac file')
             new_audio = AudioSegment.from_file(f'{tempdir}/{audio.title}.mp4')
             new_audio.export(f'{playlist_dir}/{track.title}.flac', format='flac')
+            print('Done!')
 
 
 def download_video(link, dp):
