@@ -1,4 +1,3 @@
-import tempfile
 import os
 from pytube import Playlist, YouTube
 from pytube.cli import on_progress
