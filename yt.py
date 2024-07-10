@@ -12,7 +12,7 @@ def main():
     parser.add_argument("-a", help="Download youtube audio playlist")
     args = parser.parse_args()
 
-    dp = "/home/abner/Downloads/yt-downloads"
+    dp = "Path to downloads"
 
     if args.command == "list":
         if args.a:
